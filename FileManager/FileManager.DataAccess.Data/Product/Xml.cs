@@ -7,67 +7,43 @@ using FileManager.DataAccess.Data.AbstractProduct;
 using System.Xml;
 using FileManager.Common.Layer;
 using System.IO;
+using System.Xml.Serialization;
+using System.Configuration;
 
 namespace FileManager.DataAccess.Data.Product
 {
-    class Xml : IFile
+    public class Xml : IFile
     {
-        public string path;
         public string name;
-        public override void CreateFile(object student)
+        public override void Create(Student student)
         {
-            if (!File.Exists(path))
-            {
-                Create();
-            }
-          
-        }
-
-        public void Create()
-        {
-            XmlDocument doc = new XmlDocument();
-            XmlDeclaration xmlDeclaration = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
-            XmlElement root = doc.DocumentElement;
-            doc.InsertBefore(xmlDeclaration, root);
-            XmlElement element1 = doc.CreateElement(string.Empty, "Students", string.Empty);
-            doc.AppendChild(element1);
+            studentAdd(student);
+            XmlUtility.checkFile();
+            XmlUtility.Serialize();
 
         }
-        public void AppendStudent()
+        private void studentAdd(Student student)
         {
-            XmlElement element2 = doc.CreateElement(string.Empty, "nivel1", string.Empty);
-            element1.AppendChild(element2);
-            XmlElement element3 = doc.CreateElement(string.Empty, "nivel2", string.Empty);
-            XmlText text1 = doc.CreateTextNode("texto");
-            element3.AppendChild(text1);
-            element2.AppendChild(element3);
-            XmlElement element4 = doc.CreateElement(string.Empty, "nivel3", string.Empty);
-            XmlText text2 = doc.CreateTextNode("más texto");
-            element4.AppendChild(text2);
-
-
-           
+            Student.students.Add(student);
         }
         public void GetStudentById()
         {
-            XmlDocument docu = XmlDocument.Load(path);
-            foreach (var node in docu.DescendantNodes)
         }
-        public override void DeleteFile(object student)
+        public override void Delete(Student student)
         {
             throw new NotImplementedException();
         }
 
-        public override void ReadFile(object student)
+        public override void Read(Student student)
         {
             throw new NotImplementedException();
         }
 
-        public override void UpdateFile(object student)
+        public override void Update(Student student)
         {
             throw new NotImplementedException();
         }
 
-        
+
     }
 }

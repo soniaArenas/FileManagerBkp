@@ -9,13 +9,12 @@ namespace FileManager.DataAccess.Data.AbstractProduct
 {
     public abstract class IFile
     {
-       public static SortedDictionary<int, Student> Students =
-            new SortedDictionary<int, Student>();
+      
        
-        public abstract void CreateFile(object student);
-        public abstract void ReadFile(object student);
-        public abstract void UpdateFile(object student);
-        public abstract void DeleteFile(object student);
+        public abstract void Create(Student student);
+        public abstract void Read(Student student);
+        public abstract void Update(Student student);
+        public abstract void Delete(Student student);
 
     }
 }
