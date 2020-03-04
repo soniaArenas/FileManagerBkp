@@ -24,13 +24,11 @@ namespace FileManager.Presentation.WinSite
         private void btnSave_Click(object sender, EventArgs e)
         { 
             var TypeOfFile = CmbFiles.SelectedItem.ToString();
-            var id = Students.Count + 1;
-            Student student = new Student(id, txtBoxName.Text, txtBoxSurname.Text, txtBoxAge.Text);
-            students.Add(students.Count + 1, student);
+            Student student = new Student(txtId.Text, txtBoxName.Text, txtBoxSurname.Text, txtBoxAge.Text);
             IAbstractFactory FileCreate = FactoryProvider.GetFactory(TypeOfFile);
-          
-            var Return = FileCreate.CreateFile(student);
-            MessageBox.Show(student.ToString());
+            DataAccess.Data.AbstractProduct.IFile Return = FileCreate.CreateFile(TypeOfFile);
+            Return.Create(student);
+         
         }
 
 

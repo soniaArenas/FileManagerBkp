@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <Type Id="txt">
+    <class>FileManager.DataAccess.Data.Product.Txt</class>
+  </Type>
+  <Type Id="json">
+    <class>FileManager.DataAccess.Data.Product.Json</class>
+  </Type>
+  <Type Id="xml">
+    <class>FileManager.DataAccess.Data.Product.xml</class>
+  </Type>
+</Types>
