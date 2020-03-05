@@ -35,5 +35,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="StudentBusiness.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FileManager.Common.Layer\FileManager.Common.Layer.csproj">
+      <Project>{DBE962F2-4170-4385-82F8-2F9B77284789}</Project>
+      <Name>FileManager.Common.Layer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileManager.DataAccess.Data\FileManager.DataAccess.Data.csproj">
+      <Project>{B8BF9242-793D-459F-985A-A0833E37BF30}</Project>
+      <Name>FileManager.DataAccess.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

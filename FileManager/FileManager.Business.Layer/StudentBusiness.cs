@@ -14,30 +14,30 @@ namespace FileManager.Business.Layer
         public void Add(string Name, string Surname, DateTime AgeOfBirth, string type)
         {
             Student student = new Student();
-            student.Name = Name;
-            student.Surname = Surname;
-            student.AgeOfBirth = AgeOfBirth.ToString();
-            IFile studenCreator = FactoryProvider.GetFactory(type).Creator(type);
-            studenCreator.Add(student);
+            student.StudentName = Name;
+            student.StudentSurname = Surname;
+            student.AgeOfBirth = AgeOfBirth;
+            IFile studenCreator = FactoryProvider.GetFactory(type).CreateFile(type);
+            studenCreator.Create(student);
         }
-        public void Delete(string Name, string Surname, DateTime AgeOfBirth, string StudentId, string typo)
+        public void Delete(string Name, string Surname, DateTime AgeOfBirth, string StudentId, string TypeFile)
         {
             Student student = new Student();
-            student.Name = Name;
-            student.Surname = Surname;
-            student.AgeOfBirth = AgeOfBirth.ToString();
+            student.StudentName = Name;
+            student.StudentSurname = Surname;
+            student.AgeOfBirth = AgeOfBirth;
             student.StudentId = Int32.Parse(StudentId);
-            IFile studenCreator = FactoryProvider.GetFactory(type).Creator(type);
+            IFile studenCreator = FactoryProvider.GetFactory(TypeFile).CreateFile(TypeFile);
             studenCreator.Delete(student);
         }
-        public void Update(string Name, string Surname, DateTime AgeOfBirth, string StudentId, string typo)
+        public void Update(string Name, string Surname, DateTime AgeOfBirth, int StudentId, string TypeFile)
         {
             Student student = new Student();
-            student.Name = Name;
-            student.Surname = Surname;
-            student.AgeOfBirth = AgeOfBirth.ToString();
-            student.StudentId = Int32.Parse(StudentId);
-            StudentDao studenCreator = FactoryProvider.GetFactory(typo).Creator(typo);
+            student.StudentName = Name;
+            student.StudentSurname = Surname;
+            student.AgeOfBirth = AgeOfBirth;
+            student.StudentId = StudentId;
+            IFile studenCreator = FactoryProvider.GetFactory(TypeFile).CreateFile(TypeFile);
             studenCreator.Update(student);
         }
     }
