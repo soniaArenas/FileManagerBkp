@@ -7,25 +7,26 @@ using System.Xml.Serialization;
 
 namespace FileManager.Common.Layer
 {
+    [XmlRoot("Student")]
     public class Student
     {
         [XmlElement("ID")]
-        public string StudentId { get; set; }
+        public int StudentId { get; set; }
         [XmlElement("Name")]
         public string StudentName { get; set; }
         [XmlElement("Surname")]
         public string StudentSurname { get; set; }
-        [XmlElement("Age of birth")]
-        public string studentAge { get; set; }
+        [XmlElement("Birth")]
+        public DateTime AgeOfBirth { get; set; }
 
         public static List<Student> students = new List<Student>();
-        public Student (string Id,string name, string surname, string age)
+        public Student (int Id,string name, string surname, DateTime age)
         {
             
         StudentId = Id;
             StudentName = name;
             StudentSurname = surname;
-            studentAge = age;
+            AgeOfBirth = age;
         }
         public Student()
         {
@@ -33,7 +34,7 @@ namespace FileManager.Common.Layer
             StudentId = StudentId;
             StudentName = StudentName;
             StudentSurname = StudentSurname;
-            studentAge = studentAge;
+            AgeOfBirth = AgeOfBirth;
         }
 
     }
