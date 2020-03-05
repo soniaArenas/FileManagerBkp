@@ -12,17 +12,17 @@ namespace FileManager.Business.Layer
             IFile studenCreator = FactoryProvider.GetFactory(TypeFile).CreateFile(TypeFile);
             studenCreator.Create(student);
         }
-        public void Delete(Student student, string TypeFile)
+        public void Delete(int IdStudentForDelete, string TypeFile)
         {
             
             IFile studenCreator = FactoryProvider.GetFactory(TypeFile).CreateFile(TypeFile);
-            studenCreator.Delete(student);
+            studenCreator.Delete(IdStudentForDelete);
         }
-        public void Update(Student student, string TypeFile)
+        public void Update(int studentForUpdate, string TypeFile)
         {
            
             IFile studenCreator = FactoryProvider.GetFactory(TypeFile).CreateFile(TypeFile);
-            studenCreator.Update(student);
+            studenCreator.Update(studentForUpdate);
         }
     }
 }
