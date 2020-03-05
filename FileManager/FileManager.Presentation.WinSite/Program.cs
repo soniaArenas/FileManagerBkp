@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using log4net;
 
 namespace FileManager.Presentation.WinSite
 {
@@ -17,6 +18,7 @@ namespace FileManager.Presentation.WinSite
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmStudent());
+            log4net.Config.XmlConfigurator.Configure();//lee la config de appConfig y la sube a Ram
         }
     }
 }

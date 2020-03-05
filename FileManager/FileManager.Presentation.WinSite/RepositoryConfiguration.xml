@@ -7,6 +7,6 @@
     <class>FileManager.DataAccess.Data.Product.Json</class>
   </Type>
   <Type Id="xml">
-    <class>FileManager.DataAccess.Data.Product.xml</class>
+    <class>FileManager.DataAccess.Data.Product.Xml</class>
   </Type>
 </Types>

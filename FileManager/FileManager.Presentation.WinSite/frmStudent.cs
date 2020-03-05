@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FileManager.Business.Layer;
 using FileManager.Common.Layer;
 using FileManager.DataAccess.Data;
 using FileManager.DataAccess.Data.AbstractFactory;
+using log4net;
 
 namespace FileManager.Presentation.WinSite
 {
+   
     public partial class frmStudent : Form
-    {
+
+    { private static readonly ILog logger = LogManager.GetLogger(typeof(frmStudent));
      
         public frmStudent()
         {
@@ -24,11 +28,8 @@ namespace FileManager.Presentation.WinSite
         private void btnSave_Click(object sender, EventArgs e)
         { 
             var TypeOfFile = CmbFiles.SelectedItem.ToString();
-            Student student = new Student(txtId.Text, txtBoxName.Text, txtBoxSurname.Text, txtBoxAge.Text);
-            IAbstractFactory FileCreate = FactoryProvider.GetFactory(TypeOfFile);
-            DataAccess.Data.AbstractProduct.IFile Return = FileCreate.CreateFile(TypeOfFile);
-            Return.Create(student);
-         
+            Student student = new Student(Convert.ToInt32(txtId.Text), txtBoxName.Text, txtBoxSurname.Text, dtAge.Value);
+            StudentBusiness.Add(student, TypeOfFile);
         }
 
 
