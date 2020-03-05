@@ -15,17 +15,17 @@ namespace FileManager.DataAccess.Data.Product
             throw new NotImplementedException();
         }
 
-        public override void Delete(Student student)
+        public override void Delete(int studentForDelete)
         {
             throw new NotImplementedException();
         }
 
-        public override void Read(Student student)
+        public override void Read(int StudentForRead)
         {
             throw new NotImplementedException();
         }
 
-        public override void Update(Student student)
+        public override void Update(int IdStudentForUpdate)
         {
             throw new NotImplementedException();
         }

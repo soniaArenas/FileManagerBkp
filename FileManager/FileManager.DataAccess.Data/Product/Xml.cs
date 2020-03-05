@@ -19,27 +19,28 @@ namespace FileManager.DataAccess.Data.Product
         {
             studentAdd(student);
             XmlUtility.checkFile();
-            XmlUtility.Serialize();
+            XmlUtility.Serialize(Student.students );
 
         }
         private void studentAdd(Student student)
         {
             Student.students.Add(student);
         }
-        public void GetStudentById()
+      
+        public override void Delete(int IdStudentForDelete)
         {
+            XmlUtility.Deserialize();
+            var StudentDelete = XmlUtility.GetStudentById(IdStudentForDelete);
+                Student.students.Remove(StudentDelete);
+            XmlUtility.Serialize(Student.students);
         }
-        public override void Delete(Student student)
+
+        public override void Read(int StudentForRead)
         {
             throw new NotImplementedException();
         }
 
-        public override void Read(Student student)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Update(Student student)
+        public override void Update(int IdStudentForUpdate)
         {
             throw new NotImplementedException();
         }

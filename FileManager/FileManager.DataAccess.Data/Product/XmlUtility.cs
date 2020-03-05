@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace FileManager.DataAccess.Data
@@ -25,27 +26,39 @@ namespace FileManager.DataAccess.Data
                 Deserialize();
             }
         }
-
-        public static void Serialize()
+        public static Student GetStudentById(int Id)
         {
-            Object[] array = Student.students.ToArray();
-            XmlSerializer serializer = new XmlSerializer(typeof(Object[] ));
+            Student studentId = new Student();
+            foreach (Student student in Student.students)
+            {
+                if (student.StudentId == studentId.StudentId)
+                {
+                    studentId = student;
+                }
+            }
+            return studentId;
+        }
+        public static void Serialize(List<Student> students)
+        {
+          
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Student> ));
+           
             using (TextWriter writer = new StreamWriter(getPath()))
             {
-                serializer.Serialize(writer, array);
+                serializer.Serialize(writer, students);
             }
-
+           
+          
         }
 
         public static void Deserialize()
         {
-            object[] array = Student.students.ToArray();
-            XmlSerializer deserializer = new XmlSerializer(typeof(object[]));
+           
+            XmlSerializer deserializer = new XmlSerializer(typeof(Student));
             TextReader reader = new StreamReader(getPath());
             object obj = deserializer.Deserialize(reader);
             Student XmlData = (Student)obj;
             reader.Close();
-
         }
     }
 }
